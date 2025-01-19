@@ -63,3 +63,8 @@ app.get("/items/:id", (req, res) => {
     res.json(item);
 });
 
+// Iniciar servidor
+app.listen(PORT, () => {
+    console.log(`Servidor em execução em http://localhost:${PORT}`);
+});
+
