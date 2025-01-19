@@ -13,3 +13,8 @@ app.use(express.json());
 let items = [];
 let currentId = 1;
 
+// Routes
+// POST /items - Adicionar um novo item
+app.post("/items", (req, res) => {
+    const { name, quantity, type } = req.body;
+
