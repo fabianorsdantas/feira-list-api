@@ -33,3 +33,15 @@ app.post("/items", (req, res) => {
     res.status(201).json(newItem);
 });
 
+// GET /items - Obter todos os itens ou filtrar por tipo
+app.get("/items", (req, res) => {
+    const { type } = req.query;
+
+    if (type) {
+        const filteredItems = items.filter(item => item.type === type);
+        return res.json(filteredItems);
+    }
+
+    res.json(items);
+});
+
