@@ -45,3 +45,21 @@ app.get("/items", (req, res) => {
     res.json(items);
 });
 
+// GET /items/:id - Obter item por ID
+app.get("/items/:id", (req, res) => {
+    const { id } = req.params;
+    const parsedId = parseInt(id, 10);
+
+    if (isNaN(parsedId) || parsedId <= 0) {
+        return res.status(400).json({ error: "ID must be a positive integer." });
+    }
+
+    const item = items.find(item => item.id === parsedId);
+
+    if (!item) {
+        return res.status(404).json({ error: "Item not found." });
+    }
+
+    res.json(item);
+});
+
